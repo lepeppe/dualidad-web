@@ -3,248 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Lente Fotográfico</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Dualidad Estudio Creativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
-    <div class="scene-container">
-        <!-- Capa 1: Cielo, Sol y Nubes (Profundidad: 6) -->
-        <div class="layer layer-1" data-depth="6">
-            <div class="sky"></div>
-            <div class="sun"></div>
-            <div class="cloud cloud-1"></div>
-            <div class="cloud cloud-2"></div>
-            <div class="cloud cloud-3"></div>
+    <!-- Background Image Canvas & Orbs -->
+    <div class="bg-canvas"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                <img src="assets/logo.png" alt="Dualidad Estudio Creativo" class="logo-img">
+            </a>
+            <div class="nav-links" id="nav-links">
+                <div class="nav-bubble" id="nav-bubble"></div>
+                <a href="#hero" class="nav-link active" data-lang="nav_home">Inicio</a>
+                <a href="#b2b" class="nav-link" data-lang="nav_b2b">Marcas (B2B)</a>
+                <a href="#b2c" class="nav-link" data-lang="nav_b2c">Sociales (B2C)</a>
+                <a href="#academia" class="nav-link" data-lang="nav_academy">Academia</a>
+                <a href="#portfolio" class="nav-link" data-lang="nav_portfolio">Portafolio</a>
+                <a href="#blog" class="nav-link" data-lang="nav_blog">Blog</a>
+                <a href="#contacto" class="nav-link" data-lang="nav_contact">Contacto</a>
+            </div>
+            <div class="nav-controls">
+                <button id="lang-switch" class="btn-icon">EN</button>
+                <button id="btn-admin" class="btn-primary" data-lang="nav_admin">Admin CMS</button>
+            </div>
         </div>
+    </nav>
 
-        <!-- Capa 2: Montañas Lejanas (Profundidad: 5) -->
-        <div class="layer layer-2" data-depth="5">
-            <svg viewBox="0 0 1000 300" preserveAspectRatio="none" class="mountain-svg">
-                <path d="M0,300 L0,150 L150,50 L350,200 L550,80 L800,250 L1000,100 L1000,300 Z" fill="#4a5d85"></path>
-            </svg>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="glass-text" data-lang="hero_title">Creamos Impacto Visual</h1>
+            <p data-lang="hero_subtitle">Estrategia, arte y tecnología en un solo lugar.</p>
+            
+            <div class="video-reel-container glass-card">
+                <div class="video-placeholder">
+                    <span data-lang="hero_reel">Reel Dinámico (Showcase Video)</span>
+                </div>
+            </div>
+
+            <div class="router-buttons">
+                <a href="#b2b" class="glass-btn router-btn" data-lang="router_b2b">
+                    <span class="btn-icon-ph">🏢</span>
+                    Soluciones para Marcas y Empresas
+                </a>
+                <a href="#b2c" class="glass-btn router-btn" data-lang="router_b2c">
+                    <span class="btn-icon-ph">🥂</span>
+                    Eventos Sociales y Lifestyle
+                </a>
+                <a href="#academia" class="glass-btn router-btn" data-lang="router_academy">
+                    <span class="btn-icon-ph">🎓</span>
+                    Academia Dualidad
+                </a>
+            </div>
         </div>
+    </section>
 
-        <!-- Capa 3: Montañas Cercanas (Profundidad: 4) -->
-        <div class="layer layer-3" data-depth="4">
-            <svg viewBox="0 0 1000 300" preserveAspectRatio="none" class="mountain-svg">
-                <path d="M0,300 L0,200 L250,100 L450,250 L650,120 L850,280 L1000,150 L1000,300 Z" fill="#2d3f61"></path>
-            </svg>
+    <!-- B2B Section -->
+    <section id="b2b" class="content-section">
+        <div class="section-header">
+            <h2 data-lang="b2b_title">Soluciones Corporativas y Comerciales</h2>
+            <p data-lang="b2b_desc">Para clientes de alto perfil que valoran la especialización y las características técnicas.</p>
         </div>
-
-        <!-- Capa 4: Árboles Lejanos (Profundidad: 3) -->
-        <div class="layer layer-4" data-depth="3">
-            <svg viewBox="0 0 1000 200" preserveAspectRatio="none" class="trees-svg-distant">
-                <!-- Varios pinos lejanos superpuestos -->
-                <path d="M50,200 L50,150 L30,150 L60,100 L40,100 L70,50 L100,100 L80,100 L110,150 L90,150 L90,200 Z" fill="#1e3a29" />
-                <path d="M150,200 L150,140 L130,140 L160,90 L140,90 L170,40 L200,90 L180,90 L210,140 L190,140 L190,200 Z" fill="#1e3a29" />
-                <path d="M250,200 L250,160 L230,160 L260,110 L240,110 L270,60 L300,110 L280,110 L310,160 L290,160 L290,200 Z" fill="#1c3626" />
-                <path d="M350,200 L350,130 L330,130 L360,80 L340,80 L370,30 L400,80 L380,80 L410,130 L390,130 L390,200 Z" fill="#1c3626" />
-                <path d="M450,200 L450,150 L430,150 L460,100 L440,100 L470,50 L500,100 L480,100 L510,150 L490,150 L490,200 Z" fill="#1a3223" />
-                <path d="M550,200 L550,140 L530,140 L560,90 L540,90 L570,40 L600,90 L580,90 L610,140 L590,140 L590,200 Z" fill="#1a3223" />
-                <path d="M650,200 L650,160 L630,160 L660,110 L640,110 L670,60 L700,110 L680,110 L710,160 L690,160 L690,200 Z" fill="#182e20" />
-                <path d="M750,200 L750,130 L730,130 L760,80 L740,80 L770,30 L800,80 L780,80 L810,130 L790,130 L790,200 Z" fill="#182e20" />
-                <path d="M850,200 L850,150 L830,150 L860,100 L840,100 L870,50 L900,100 L880,100 L910,150 L890,150 L890,200 Z" fill="#162a1d" />
-                <path d="M950,200 L950,140 L930,140 L960,90 L940,90 L970,40 L1000,90 L980,90 L1010,140 L990,140 L990,200 Z" fill="#162a1d" />
-            </svg>
+        <div class="grid-cards">
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv1_title">Filmmaking y Fotografía</h3>
+                <p data-lang="b2b_serv1_desc">Dirección de arte, sesiones de producto y corporativo con equipos de alta gama (cámaras full frame, DJI).</p>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv2_title">Marketing Estratégico</h3>
+                <p data-lang="b2b_serv2_desc">Planificación de campañas y psicología del consumidor para redes y medios tradicionales.</p>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv3_title">Desarrollo Web y Apps</h3>
+                <p data-lang="b2b_serv3_desc">Programación a medida y arquitecturas ultrarrápidas con Vercel y GitHub.</p>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv4_title">Producción de Audio</h3>
+                <p data-lang="b2b_serv4_desc">Locución comercial y diseño sonoro para spots publicitarios.</p>
+            </div>
         </div>
+    </section>
 
-        <!-- Capa 5: Árboles Cercanos (Profundidad: 2) -->
-        <div class="layer layer-5" data-depth="2">
-            <svg viewBox="0 0 1000 250" preserveAspectRatio="none" class="trees-svg-close">
-                <!-- Pinos más grandes y oscuros -->
-                <path d="M100,250 L100,180 L70,180 L110,110 L80,110 L125,40 L170,110 L140,110 L180,180 L150,180 L150,250 Z" fill="#0f2415" />
-                <path d="M300,250 L300,160 L270,160 L310,90 L280,90 L325,20 L370,90 L340,90 L380,160 L350,160 L350,250 Z" fill="#0d1e12" />
-                <path d="M500,250 L500,190 L470,190 L510,120 L480,120 L525,50 L570,120 L540,120 L580,190 L550,190 L550,250 Z" fill="#0b1a0f" />
-                <path d="M700,250 L700,170 L670,170 L710,100 L680,100 L725,30 L770,100 L740,100 L780,170 L750,170 L750,250 Z" fill="#09150c" />
-                <path d="M900,250 L900,180 L870,180 L910,110 L880,110 L925,40 L970,110 L940,110 L980,180 L950,180 L950,250 Z" fill="#081109" />
-            </svg>
+    <!-- B2C Section -->
+    <section id="b2c" class="content-section alternate-bg">
+        <div class="section-header">
+            <h2 data-lang="b2c_title">Eventos Sociales y Lifestyle</h2>
+            <p data-lang="b2c_desc">Enfocados al 100% en capturar la emoción y el momento perfecto.</p>
         </div>
+        <div class="grid-cards">
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2c_serv1_title">Bodas y Quince Años</h3>
+                <p data-lang="b2c_serv1_desc">Cobertura audiovisual completa, desde la preproducción hasta el material final.</p>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2c_serv2_title">Edición y Animación</h3>
+                <p data-lang="b2c_serv2_desc">Álbumes digitales, invitaciones animadas optimizadas para WhatsApp y gráficos en movimiento.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Capa 6: Persona (Primer plano) (Profundidad: 1) -->
-        <div class="layer layer-6" data-depth="1" id="subject-layer">
-            <svg id="subject-standing" viewBox="0 0 200 500" class="subject-svg">
-                <!-- Cabeza -->
-                <circle cx="100" cy="80" r="40" fill="#fbbf24" />
-                <!-- Torso -->
-                <rect x="60" y="130" width="80" height="180" rx="20" fill="#fbbf24" />
-                <!-- Brazo izquierdo -->
-                <rect x="25" y="140" width="30" height="150" rx="15" fill="#fbbf24" />
-                <!-- Brazo derecho -->
-                <rect x="145" y="140" width="30" height="150" rx="15" fill="#fbbf24" />
-                <!-- Pierna izquierda (llega hasta la base del suelo) -->
-                <rect x="65" y="290" width="30" height="210" rx="15" fill="#fbbf24" />
-                <!-- Pierna derecha (llega hasta la base del suelo) -->
-                <rect x="105" y="290" width="30" height="210" rx="15" fill="#fbbf24" />
-            </svg>
-
-            <svg id="subject-running" viewBox="0 0 400 500" class="subject-svg" style="display: none;">
-                <!-- Silueta corriendo -->
-                <!-- Cabeza inclinada -->
-                <circle cx="280" cy="90" r="35" fill="#fbbf24" />
-                <!-- Torso inclinado -->
-                <path d="M 260 130 Q 150 200 150 280 L 190 300 Q 270 200 290 140 Z" fill="#fbbf24" />
-                <!-- Brazo izq adelante -->
-                <path d="M 260 150 Q 320 200 360 160" fill="none" stroke="#fbbf24" stroke-width="25" stroke-linecap="round" />
-                <!-- Brazo der atras -->
-                <path d="M 230 170 Q 100 150 80 180" fill="none" stroke="#fbbf24" stroke-width="25" stroke-linecap="round" />
-                <!-- Pierna delantera -->
-                <path d="M 170 290 Q 250 350 220 500" fill="none" stroke="#fbbf24" stroke-width="30" stroke-linecap="round" />
-                <!-- Pierna trasera -->
-                <path d="M 150 280 Q 50 320 20 450" fill="none" stroke="#fbbf24" stroke-width="30" stroke-linecap="round" />
-            </svg>
-
-            <svg id="subject-car" viewBox="0 0 700 245" class="subject-svg" style="display: none; height: 35vh; bottom: 0; left: 8%;">
-                <!-- Silueta de auto deportivo -->
-                <path d="M 50 200 L 50 150 Q 70 120 150 120 L 250 80 Q 300 60 400 80 L 580 140 Q 640 160 640 200 Z" fill="#fbbf24" />
-                <!-- Ruedas (Negras) -->
-                <circle class="car-wheel" cx="160" cy="200" r="45" fill="#0f172a" />
-                <circle class="car-wheel" cx="480" cy="200" r="45" fill="#0f172a" />
-                <!-- Aleron -->
-                <path d="M 50 120 L 80 120 L 70 150 Z" fill="#fbbf24" />
-            </svg>
+    <!-- Academia Section -->
+    <section id="academia" class="content-section">
+        <div class="section-header">
+            <h2 data-lang="academy_title">Academia Dualidad</h2>
+            <p data-lang="academy_desc">Ecosistema educativo estructurado para formar creadores integrales.</p>
         </div>
         
-        <!-- Capa de superposición para el granulado (ISO) -->
-        <div class="grain-overlay"></div>
-    </div>
-
-    <!-- Filtro SVG para generar el granulado (ruido fractal) -->
-    <svg style="display: none;">
-        <filter id="noiseFilter">
-            <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/>
-        </filter>
-        <filter id="motionBlurFilter">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="0 0" id="motionBlurNode" />
-        </filter>
-    </svg>
-
-    <!-- Barra Superior Flotante: Entorno y Lente (Discreta y No Invasiva) -->
-    <div class="top-bar-container">
-        <div class="top-bar-panel">
-            <div class="top-control-item">
-                <div class="top-label-row">
-                    <span class="top-title">☀️ Hora del Día</span>
-                    <span class="val-label" id="val-time">12:00</span>
+        <div class="academy-layout">
+            <div class="academy-text">
+                <div class="glass-card">
+                    <h3 data-lang="academy_school1">Escuela de Fotografía</h3>
+                    <ul data-lang="academy_list1">
+                        <li>Técnica y óptica (ISO, Apertura, Velocidad).</li>
+                        <li>Iluminación de estudio y exteriores.</li>
+                        <li>Dirección de modelos.</li>
+                    </ul>
                 </div>
-                <input type="range" id="time-slider" min="6" max="18" step="0.01" value="12">
-                <div class="top-sublabels">
-                    <span>06:00 (Amanecer)</span>
-                    <span>18:00 (Atardecer)</span>
+                <div class="glass-card">
+                    <h3 data-lang="academy_school2">Escuela de Filmmaking</h3>
+                    <ul data-lang="academy_list2">
+                        <li>Preproducción y guion.</li>
+                        <li>Estabilización y movimiento.</li>
+                        <li>Flujo de trabajo Adobe.</li>
+                    </ul>
+                </div>
+                <div class="glass-card">
+                    <h3 data-lang="academy_school3">Escuela de Marketing</h3>
+                    <ul data-lang="academy_list3">
+                        <li>Psicología del consumidor.</li>
+                        <li>Campañas en redes sociales.</li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="top-divider"></div>
-
-            <div class="top-control-item">
-                <div class="top-label-row">
-                    <span class="top-title">🔍 Distancia Focal</span>
-                    <span class="val-label" id="val-zoom">50mm</span>
+            
+            <div class="academy-simulator glass-card">
+                <h3 data-lang="academy_sim_title">Herramienta de Apoyo: Simulador Óptico</h3>
+                <p data-lang="academy_sim_desc">Practica en tiempo real la exposición y el triángulo fotográfico.</p>
+                <div class="iframe-container">
+                    <iframe src="simulador/index.html" title="Simulador Fotográfico" loading="lazy"></iframe>
                 </div>
-                <input type="range" id="zoom-slider" min="0" max="100" step="0.01" value="44.444">
-                <div class="top-sublabels">
-                    <span>10mm (Cuerpo)</span>
-                    <span>100mm (Rostro)</span>
+                <a href="simulador/index.html" target="_blank" class="glass-btn" style="margin-top: 15px; display: inline-block;" data-lang="academy_sim_btn">Abrir Simulador Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="content-section alternate-bg">
+        <div class="section-header">
+            <h2 data-lang="portfolio_title">Portafolio Dinámico</h2>
+            <p data-lang="portfolio_desc">Explora nuestros mejores trabajos.</p>
+        </div>
+        
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all" data-lang="filter_all">Todos</button>
+            <button class="filter-btn" data-filter="comerciales" data-lang="filter_com">Comerciales</button>
+            <button class="filter-btn" data-filter="hoteles" data-lang="filter_hot">Hoteles</button>
+            <button class="filter-btn" data-filter="bodas" data-lang="filter_wed">Bodas</button>
+            <button class="filter-btn" data-filter="webs" data-lang="filter_web">Webs</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item glass-card" data-category="comerciales">
+                <div class="portfolio-img bg-teal"></div>
+                <h3>Spot Comercial X</h3>
+            </div>
+            <div class="portfolio-item glass-card" data-category="hoteles">
+                <div class="portfolio-img bg-gold"></div>
+                <h3>Hotel Resort Y</h3>
+            </div>
+            <div class="portfolio-item glass-card" data-category="bodas">
+                <div class="portfolio-img bg-green"></div>
+                <h3>Boda Destino Z</h3>
+            </div>
+            <div class="portfolio-item glass-card" data-category="webs">
+                <div class="portfolio-img bg-dark"></div>
+                <h3>App Interactiva W</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="content-section">
+        <div class="section-header">
+            <h2 data-lang="blog_title">Blog & Noticias</h2>
+            <p data-lang="blog_desc">Novedades, tips y artículos del sector audiovisual.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="glass-card tilt-card">
+                <span class="badge">Nuevo</span>
+                <h3>Tendencias en Filmmaking 2027</h3>
+                <p>Descubre las nuevas narrativas visuales.</p>
+                <a href="#" class="link" data-lang="blog_read">Leer más →</a>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3>El impacto del Diseño Sonoro</h3>
+                <p>Cómo el audio define la experiencia del consumidor.</p>
+                <a href="#" class="link" data-lang="blog_read">Leer más →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="content-section alternate-bg">
+        <div class="section-header">
+            <h2 data-lang="contact_title">Contacto Inteligente</h2>
+            <p data-lang="contact_desc">Cuéntanos sobre tu proyecto o interés.</p>
+        </div>
+        
+        <div class="contact-container glass-card">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label data-lang="contact_type">¿Qué tipo de cliente eres?</label>
+                    <select id="client-type" class="glass-input">
+                        <option value="empresa" data-lang="opt_empresa">Empresa / Marca</option>
+                        <option value="evento" data-lang="opt_evento">Evento Social</option>
+                        <option value="alumno" data-lang="opt_alumno">Alumno / Academia</option>
+                    </select>
                 </div>
+
+                <div class="form-group">
+                    <label data-lang="contact_name">Nombre completo</label>
+                    <input type="text" class="glass-input" required>
+                </div>
+
+                <!-- Dynamic Fields -->
+                <div id="dynamic-empresa" class="dynamic-field active">
+                    <div class="form-group">
+                        <label data-lang="contact_rubro">Rubro de la empresa</label>
+                        <input type="text" class="glass-input">
+                    </div>
+                    <div class="form-group">
+                        <label data-lang="contact_obj">Objetivo de la campaña</label>
+                        <textarea class="glass-input"></textarea>
+                    </div>
+                </div>
+
+                <div id="dynamic-evento" class="dynamic-field">
+                    <div class="form-group">
+                        <label data-lang="contact_date">Fecha del evento</label>
+                        <input type="date" class="glass-input">
+                    </div>
+                    <div class="form-group">
+                        <label data-lang="contact_loc">Locación principal</label>
+                        <input type="text" class="glass-input">
+                    </div>
+                </div>
+
+                <div id="dynamic-alumno" class="dynamic-field">
+                    <div class="form-group">
+                        <label data-lang="contact_mod">Módulo de interés</label>
+                        <select class="glass-input">
+                            <option>Escuela de Fotografía</option>
+                            <option>Escuela de Filmmaking</option>
+                            <option>Escuela de Marketing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="glass-btn primary-btn" style="width: 100%" data-lang="contact_btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Dualidad Estudio Creativo. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Admin CMS Modal -->
+    <div id="admin-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <button class="close-btn" id="close-admin">×</button>
+            <h2 data-lang="admin_title">Panel de Administración CMS</h2>
+            <div class="admin-tabs">
+                <button class="tab-btn active">Portafolio</button>
+                <button class="tab-btn">Blog</button>
+                <button class="tab-btn">Ajustes</button>
+            </div>
+            <div class="admin-body">
+                <p data-lang="admin_desc">Aquí podrás gestionar las galerías, añadir nuevos proyectos y redactar artículos del blog de forma dinámica.</p>
+                <button class="glass-btn">+ Añadir Nuevo Proyecto</button>
             </div>
         </div>
     </div>
 
-    <div class="ui-container">
-        <div class="glass-panel">
-            <h1>Cámara Fotográfica</h1>
-            <p>Parámetros de exposición y sensor.</p>
-            
-            <!-- Dial de Modos de Disparo -->
-            <div class="mode-dial-section">
-                <label class="section-title">Modo de Disparo</label>
-                <div class="mode-dial-grid" id="mode-dial">
-                    <button class="mode-btn" data-mode="AUTO" title="Automático General">AUTO</button>
-                    <button class="mode-btn" data-mode="PORTRAIT" title="Modo Retrato">👤 Retrato</button>
-                    <button class="mode-btn" data-mode="SPORT" title="Modo Deporte / Acción">🏃 Deporte</button>
-                    <button class="mode-btn" data-mode="A" title="Prioridad de Apertura">A / Av</button>
-                    <button class="mode-btn" data-mode="S" title="Prioridad de Obturación">S / Tv</button>
-                    <button class="mode-btn active" data-mode="M" title="Manual">M</button>
-                </div>
-                <div class="mode-description-box" id="mode-desc-box">
-                    <span class="mode-title-tag" id="mode-desc-title">M (Manual)</span>
-                    <span class="mode-desc-text" id="mode-desc-text">Control total. Tú ajustas todos los valores.</span>
-                </div>
-            </div>
-
-            <!-- Exposímetro (Light Meter) -->
-            <div class="light-meter-container" style="margin-top: 12px; margin-bottom: 16px; padding: 10px 14px; background: rgba(0,0,0,0.35); border-radius: 12px;">
-                <div class="meter-labels" style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #cbd5e1; margin-bottom: 4px;">
-                    <span>-3</span><span>-2</span><span>-1</span><span>0</span><span>+1</span><span>+2</span><span>+3</span>
-                </div>
-                <div class="meter-track" style="position: relative; height: 8px; background: linear-gradient(90deg, #1e293b, #475569, #e2e8f0, #475569, #1e293b); border-radius: 4px;">
-                    <div class="meter-indicator" id="exposure-indicator" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); color: #fbbf24; font-size: 1.1rem; transition: left 0.25s ease;">▼</div>
-                </div>
-                <div class="meter-status" id="exposure-status" style="text-align: center; margin-top: 5px; font-size: 0.8rem; font-weight: 600; color: #fbbf24;">Exposición Correcta (0.0 EV)</div>
-            </div>
-            
-            <div class="control-group" style="margin-bottom: 12px;">
-                <label for="subject-select">Sujeto en Escena</label>
-                <select id="subject-select" class="styled-select">
-                    <option value="standing">Persona (Sin movimiento)</option>
-                    <option value="running">Persona (Corriendo)</option>
-                    <option value="car">Carro (Alta velocidad)</option>
-                </select>
-            </div>
-
-            <!-- Control de Auto ISO -->
-            <div class="auto-iso-container" id="auto-iso-container">
-                <div class="auto-iso-left">
-                    <span class="auto-iso-title">Auto ISO</span>
-                    <span class="auto-iso-badge" id="auto-iso-badge">OFF</span>
-                </div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="auto-iso-toggle">
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
-
-            <!-- Slider Sensibilidad ISO -->
-            <div class="control-group" id="group-iso" style="margin-top: 10px;">
-                <div class="control-label-row">
-                    <label for="iso-slider">Sensibilidad (ISO) <span class="auto-badge" id="badge-iso">AUTO</span></label>
-                    <span class="val-label" id="val-iso">ISO 400</span>
-                </div>
-                <input type="range" id="iso-slider" min="0" max="100" step="0.01" value="33.333">
-                <div class="slider-labels">
-                    <span>ISO 50 (Limpio)</span>
-                    <span>ISO 25600 (Grano)</span>
-                </div>
-            </div>
-
-            <!-- Slider Apertura de Diafragma -->
-            <div class="control-group" id="group-aperture" style="margin-top: 12px;">
-                <div class="control-label-row">
-                    <label for="focus-slider">Apertura Diafragma <span class="auto-badge" id="badge-aperture">AUTO</span></label>
-                    <span class="val-label" id="val-aperture">f/5.6</span>
-                </div>
-                <input type="range" id="focus-slider" min="0" max="100" step="0.01" value="60">
-                <div class="slider-labels">
-                    <span>f/1.2 (Bokeh)</span>
-                    <span>f/22 (Nítido)</span>
-                </div>
-            </div>
-
-            <!-- Slider Velocidad de Obturación -->
-            <div class="control-group" id="group-shutter" style="margin-top: 12px;">
-                <div class="control-label-row">
-                    <label for="shutter-slider">Velocidad Obturación <span class="auto-badge" id="badge-shutter">AUTO</span></label>
-                    <span class="val-label" id="val-shutter">1/125s</span>
-                </div>
-                <input type="range" id="shutter-slider" min="0" max="100" step="0.01" value="53.846">
-                <div class="slider-labels">
-                    <span>1s (Movimiento)</span>
-                    <span>1/8000s (Congelado)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="main.js"></script>
+    <script src="main.js?v=9"></script>
 </body>
 </html>
