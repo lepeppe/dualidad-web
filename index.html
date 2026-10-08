@@ -3,121 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dualidad Estudio Creativo | Impacto Visual, Producción Audiovisual y Academia</title>
-    <meta name="description" content="Estudio creativo integrando B2B, B2C y Academia Fotográfica">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Dualidad Estudio Creativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
-    <!-- Liquid Lens Cursor -->
-    <div id="lens-cursor"></div>
+    <!-- Background Image Canvas & Orbs -->
+    <div class="bg-canvas"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
 
-    <!-- Ambient Orbs Background (Brand Colors) -->
-    <div class="ambient-background">
-        <div class="orb orb-blue"></div>
-        <div class="orb orb-gold"></div>
-        <div class="orb orb-green"></div>
-    </div>
-
-    <!-- Navigation Bar -->
+    <!-- Navigation -->
     <nav class="glass-nav">
-        <div class="nav-content">
-            <div class="brand">
-                <!-- Placeholder for the user's logo -->
-                <div class="logo-placeholder">
-                    <span class="dd-icon">D</span>
-                    <div class="brand-text">
-                        <strong>DUALIDAD</strong>
-                        <span>estudio creativo</span>
-                    </div>
-                </div>
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                <img src="assets/logo.png" alt="Dualidad Estudio Creativo" class="logo-img">
+            </a>
+            <div class="nav-links" id="nav-links">
+                <div class="nav-bubble" id="nav-bubble"></div>
+                <a href="#hero" class="nav-link active" data-lang="nav_home">Inicio</a>
+                <a href="#b2b" class="nav-link" data-lang="nav_b2b">Marcas (B2B)</a>
+                <a href="#b2c" class="nav-link" data-lang="nav_b2c">Sociales (B2C)</a>
+                <a href="#academia" class="nav-link" data-lang="nav_academy">Academia</a>
+                <a href="#portfolio" class="nav-link" data-lang="nav_portfolio">Portafolio</a>
+                <a href="#blog" class="nav-link" data-lang="nav_blog">Blog</a>
+                <a href="#contacto" class="nav-link" data-lang="nav_contact">Contacto</a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#servicios-b2b">Marcas (B2B)</a></li>
-                <li><a href="#servicios-b2c">Lifestyle (B2C)</a></li>
-                <li><a href="#academia">Academia</a></li>
-                <li><a href="#portafolio">Portafolio</a></li>
-            </ul>
-            <button class="btn-admin" id="btnAdmin">Admin CMS</button>
+            <div class="nav-controls">
+                <button id="lang-switch" class="btn-icon">EN</button>
+                <button id="btn-admin" class="btn-primary" data-lang="nav_admin">Admin CMS</button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero" id="inicio">
+    <section id="hero" class="hero-section">
         <div class="hero-content">
-            <h1 class="reveal-text">Creamos impacto visual.<br>Capturamos tu esencia.</h1>
-            <p class="hero-subtitle reveal-text delay-1">Producción audiovisual, estrategias de marca y educación de alto nivel.</p>
-            <div class="hero-actions reveal-text delay-2">
-                <a href="#contacto" class="btn-primary">Iniciar Proyecto</a>
-                <a href="#showreel" class="btn-secondary play-btn">
-                    <span class="play-icon">▶</span> Ver Showreel
+            <h1 class="glass-text" data-lang="hero_title">Creamos Impacto Visual</h1>
+            <p data-lang="hero_subtitle">Estrategia, arte y tecnología en un solo lugar.</p>
+            
+            <div class="video-reel-container glass-card">
+                <div class="video-placeholder">
+                    <span data-lang="hero_reel">Reel Dinámico (Showcase Video)</span>
+                </div>
+            </div>
+
+            <div class="router-buttons">
+                <a href="#b2b" class="glass-btn router-btn" data-lang="router_b2b">
+                    <span class="btn-icon-ph">🏢</span>
+                    Soluciones para Marcas y Empresas
+                </a>
+                <a href="#b2c" class="glass-btn router-btn" data-lang="router_b2c">
+                    <span class="btn-icon-ph">🥂</span>
+                    Eventos Sociales y Lifestyle
+                </a>
+                <a href="#academia" class="glass-btn router-btn" data-lang="router_academy">
+                    <span class="btn-icon-ph">🎓</span>
+                    Academia Dualidad
                 </a>
             </div>
         </div>
-    </header>
-
-    <!-- The 3 Routing Doors -->
-    <section class="routing-doors">
-        <div class="door-card tilt-effect">
-            <div class="door-icon">🏢</div>
-            <h3>Soluciones B2B</h3>
-            <p>Filmmaking, Estrategia con Psicología de Conversión y Desarrollo Web.</p>
-            <a href="#servicios-b2b" class="door-link">Explorar Marcas &rarr;</a>
-        </div>
-        <div class="door-card tilt-effect">
-            <div class="door-icon">💍</div>
-            <h3>Eventos & Lifestyle</h3>
-            <p>Bodas de destino, quince años y momentos inolvidables.</p>
-            <a href="#servicios-b2c" class="door-link">Ver B2C &rarr;</a>
-        </div>
-        <div class="door-card tilt-effect">
-            <div class="door-icon">📸</div>
-            <h3>Academia Dualidad</h3>
-            <p>Aprende fotografía con nuestro simulador óptico avanzado.</p>
-            <a href="#academia" class="door-link">Ir a la Academia &rarr;</a>
-        </div>
     </section>
 
-    <!-- Academy & Simulator Section -->
-    <section class="academy-section" id="academia">
+    <!-- B2B Section -->
+    <section id="b2b" class="content-section">
         <div class="section-header">
-            <h2>Academia Dualidad</h2>
-            <p>Domina la luz, la composición y la técnica.</p>
+            <h2 data-lang="b2b_title">Soluciones Corporativas y Comerciales</h2>
+            <p data-lang="b2b_desc">Para clientes de alto perfil que valoran la especialización y las características técnicas.</p>
         </div>
-        <div class="mac-window">
-            <div class="mac-header">
-                <div class="mac-buttons">
-                    <span></span><span></span><span></span>
-                </div>
-                <div class="mac-title">simulador-fotografico.exe</div>
+        <div class="grid-cards">
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv1_title">Filmmaking y Fotografía</h3>
+                <p data-lang="b2b_serv1_desc">Dirección de arte, sesiones de producto y corporativo con equipos de alta gama (cámaras full frame, DJI).</p>
             </div>
-            <div class="mac-body">
-                <!-- Embedded Simulator -->
-                <iframe src="simulador/index.html" frameborder="0" class="simulator-frame"></iframe>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv2_title">Marketing Estratégico</h3>
+                <p data-lang="b2b_serv2_desc">Planificación de campañas y psicología del consumidor para redes y medios tradicionales.</p>
             </div>
-            <div class="mac-footer">
-                <a href="simulador/index.html" target="_blank" class="btn-primary" style="margin-top: 20px; display: inline-block;">Abrir en Pantalla Completa</a>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv3_title">Desarrollo Web y Apps</h3>
+                <p data-lang="b2b_serv3_desc">Programación a medida y arquitecturas ultrarrápidas con Vercel y GitHub.</p>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2b_serv4_title">Producción de Audio</h3>
+                <p data-lang="b2b_serv4_desc">Locución comercial y diseño sonoro para spots publicitarios.</p>
             </div>
         </div>
     </section>
+
+    <!-- B2C Section -->
+    <section id="b2c" class="content-section alternate-bg">
+        <div class="section-header">
+            <h2 data-lang="b2c_title">Eventos Sociales y Lifestyle</h2>
+            <p data-lang="b2c_desc">Enfocados al 100% en capturar la emoción y el momento perfecto.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2c_serv1_title">Bodas y Quince Años</h3>
+                <p data-lang="b2c_serv1_desc">Cobertura audiovisual completa, desde la preproducción hasta el material final.</p>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3 data-lang="b2c_serv2_title">Edición y Animación</h3>
+                <p data-lang="b2c_serv2_desc">Álbumes digitales, invitaciones animadas optimizadas para WhatsApp y gráficos en movimiento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academia Section -->
+    <section id="academia" class="content-section">
+        <div class="section-header">
+            <h2 data-lang="academy_title">Academia Dualidad</h2>
+            <p data-lang="academy_desc">Ecosistema educativo estructurado para formar creadores integrales.</p>
+        </div>
+        
+        <div class="academy-layout">
+            <div class="academy-text">
+                <div class="glass-card">
+                    <h3 data-lang="academy_school1">Escuela de Fotografía</h3>
+                    <ul data-lang="academy_list1">
+                        <li>Técnica y óptica (ISO, Apertura, Velocidad).</li>
+                        <li>Iluminación de estudio y exteriores.</li>
+                        <li>Dirección de modelos.</li>
+                    </ul>
+                </div>
+                <div class="glass-card">
+                    <h3 data-lang="academy_school2">Escuela de Filmmaking</h3>
+                    <ul data-lang="academy_list2">
+                        <li>Preproducción y guion.</li>
+                        <li>Estabilización y movimiento.</li>
+                        <li>Flujo de trabajo Adobe.</li>
+                    </ul>
+                </div>
+                <div class="glass-card">
+                    <h3 data-lang="academy_school3">Escuela de Marketing</h3>
+                    <ul data-lang="academy_list3">
+                        <li>Psicología del consumidor.</li>
+                        <li>Campañas en redes sociales.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="academy-simulator glass-card">
+                <h3 data-lang="academy_sim_title">Herramienta de Apoyo: Simulador Óptico</h3>
+                <p data-lang="academy_sim_desc">Practica en tiempo real la exposición y el triángulo fotográfico.</p>
+                <div class="iframe-container">
+                    <iframe src="simulador/index.html" title="Simulador Fotográfico" loading="lazy"></iframe>
+                </div>
+                <a href="simulador/index.html" target="_blank" class="glass-btn" style="margin-top: 15px; display: inline-block;" data-lang="academy_sim_btn">Abrir Simulador Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="content-section alternate-bg">
+        <div class="section-header">
+            <h2 data-lang="portfolio_title">Portafolio Dinámico</h2>
+            <p data-lang="portfolio_desc">Explora nuestros mejores trabajos.</p>
+        </div>
+        
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all" data-lang="filter_all">Todos</button>
+            <button class="filter-btn" data-filter="comerciales" data-lang="filter_com">Comerciales</button>
+            <button class="filter-btn" data-filter="hoteles" data-lang="filter_hot">Hoteles</button>
+            <button class="filter-btn" data-filter="bodas" data-lang="filter_wed">Bodas</button>
+            <button class="filter-btn" data-filter="webs" data-lang="filter_web">Webs</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item glass-card" data-category="comerciales">
+                <div class="portfolio-img bg-teal"></div>
+                <h3>Spot Comercial X</h3>
+            </div>
+            <div class="portfolio-item glass-card" data-category="hoteles">
+                <div class="portfolio-img bg-gold"></div>
+                <h3>Hotel Resort Y</h3>
+            </div>
+            <div class="portfolio-item glass-card" data-category="bodas">
+                <div class="portfolio-img bg-green"></div>
+                <h3>Boda Destino Z</h3>
+            </div>
+            <div class="portfolio-item glass-card" data-category="webs">
+                <div class="portfolio-img bg-dark"></div>
+                <h3>App Interactiva W</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="content-section">
+        <div class="section-header">
+            <h2 data-lang="blog_title">Blog & Noticias</h2>
+            <p data-lang="blog_desc">Novedades, tips y artículos del sector audiovisual.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="glass-card tilt-card">
+                <span class="badge">Nuevo</span>
+                <h3>Tendencias en Filmmaking 2027</h3>
+                <p>Descubre las nuevas narrativas visuales.</p>
+                <a href="#" class="link" data-lang="blog_read">Leer más →</a>
+            </div>
+            <div class="glass-card tilt-card">
+                <h3>El impacto del Diseño Sonoro</h3>
+                <p>Cómo el audio define la experiencia del consumidor.</p>
+                <a href="#" class="link" data-lang="blog_read">Leer más →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="content-section alternate-bg">
+        <div class="section-header">
+            <h2 data-lang="contact_title">Contacto Inteligente</h2>
+            <p data-lang="contact_desc">Cuéntanos sobre tu proyecto o interés.</p>
+        </div>
+        
+        <div class="contact-container glass-card">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label data-lang="contact_type">¿Qué tipo de cliente eres?</label>
+                    <select id="client-type" class="glass-input">
+                        <option value="empresa" data-lang="opt_empresa">Empresa / Marca</option>
+                        <option value="evento" data-lang="opt_evento">Evento Social</option>
+                        <option value="alumno" data-lang="opt_alumno">Alumno / Academia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-lang="contact_name">Nombre completo</label>
+                    <input type="text" class="glass-input" required>
+                </div>
+
+                <!-- Dynamic Fields -->
+                <div id="dynamic-empresa" class="dynamic-field active">
+                    <div class="form-group">
+                        <label data-lang="contact_rubro">Rubro de la empresa</label>
+                        <input type="text" class="glass-input">
+                    </div>
+                    <div class="form-group">
+                        <label data-lang="contact_obj">Objetivo de la campaña</label>
+                        <textarea class="glass-input"></textarea>
+                    </div>
+                </div>
+
+                <div id="dynamic-evento" class="dynamic-field">
+                    <div class="form-group">
+                        <label data-lang="contact_date">Fecha del evento</label>
+                        <input type="date" class="glass-input">
+                    </div>
+                    <div class="form-group">
+                        <label data-lang="contact_loc">Locación principal</label>
+                        <input type="text" class="glass-input">
+                    </div>
+                </div>
+
+                <div id="dynamic-alumno" class="dynamic-field">
+                    <div class="form-group">
+                        <label data-lang="contact_mod">Módulo de interés</label>
+                        <select class="glass-input">
+                            <option>Escuela de Fotografía</option>
+                            <option>Escuela de Filmmaking</option>
+                            <option>Escuela de Marketing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="glass-btn primary-btn" style="width: 100%" data-lang="contact_btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Dualidad Estudio Creativo. Todos los derechos reservados.</p>
+    </footer>
 
     <!-- Admin CMS Modal -->
-    <div class="modal-overlay" id="adminModal">
-        <div class="modal-window">
-            <button class="close-btn" id="closeAdmin">&times;</button>
-            <h2>Panel Administrativo CMS</h2>
+    <div id="admin-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <button class="close-btn" id="close-admin">×</button>
+            <h2 data-lang="admin_title">Panel de Administración CMS</h2>
             <div class="admin-tabs">
-                <button class="tab active">Portafolio</button>
-                <button class="tab">Blog</button>
-                <button class="tab">Monetización</button>
+                <button class="tab-btn active">Portafolio</button>
+                <button class="tab-btn">Blog</button>
+                <button class="tab-btn">Ajustes</button>
             </div>
-            <div class="admin-content">
-                <p>Gestor de contenidos en construcción. Aquí podrás subir fotos, artículos de blog de pago ($19 USD) y gestionar contactos.</p>
-                <div class="placeholder-chart"></div>
+            <div class="admin-body">
+                <p data-lang="admin_desc">Aquí podrás gestionar las galerías, añadir nuevos proyectos y redactar artículos del blog de forma dinámica.</p>
+                <button class="glass-btn">+ Añadir Nuevo Proyecto</button>
             </div>
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=9"></script>
 </body>
 </html>
