@@ -57,6 +57,9 @@ navLinks.forEach(link => {
                 if (typeof triggerSectionCascade === 'function') {
                     triggerSectionCascade(targetElement, dir);
                 }
+
+                const sectionName = targetId.replace('#', '');
+                updateActiveSectionBackground(sectionName);
                 
                 isProgrammaticScrolling = true;
                 targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -76,6 +79,9 @@ navLinks.forEach(link => {
         if (targetId && targetId.startsWith('#')) {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                const sectionName = targetId.replace('#', '');
+                updateActiveSectionBackground(sectionName);
+
                 isProgrammaticScrolling = true;
                 targetElement.scrollIntoView({ behavior: 'smooth' });
                 setTimeout(() => { isProgrammaticScrolling = false; }, 750);
@@ -93,23 +99,83 @@ if (navLinksContainer) {
     });
 }
 
-// Scrollspy: update active link and move bubble as user scrolls through sections
+// Scrollspy & Background Transition Manager
+let currentActiveSectionId = 'hero';
+
+function updateActiveSectionBackground(newSectionId) {
+    if (!newSectionId || newSectionId === currentActiveSectionId) {
+        return; // SAME SECTION: strictly do nothing so video continues smoothly without interruption!
+    }
+    
+    const previousSectionId = currentActiveSectionId;
+    currentActiveSectionId = newSectionId;
+    document.body.dataset.activeSection = newSectionId;
+    
+    const heroBackdrop = document.getElementById('hero-video-backdrop');
+    const b2bBackdrop = document.getElementById('b2b-video-backdrop');
+    const b2cBackdrop = document.getElementById('b2c-video-backdrop');
+    const heroVideo = document.getElementById('hero-bg-video');
+    const b2bVideo = document.getElementById('b2b-bg-video');
+    const b2cVideo = document.getElementById('b2c-bg-video');
+
+    if (newSectionId === 'hero') {
+        if (heroBackdrop) heroBackdrop.classList.remove('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (b2bVideo) b2bVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+        // Re-entering Hero from another section: rewind and play once
+        if (previousSectionId !== 'hero' && typeof applyHeroVideoSpeedRamp === 'function') {
+            applyHeroVideoSpeedRamp(true);
+        }
+    } else if (newSectionId === 'b2b') {
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.remove('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+        // Re-entering B2B from another section: rewind and play once
+        if (previousSectionId !== 'b2b' && typeof playB2bVideo === 'function') {
+            playB2bVideo(true);
+        }
+    } else if (newSectionId === 'b2c') {
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.remove('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2bVideo) b2bVideo.pause();
+        // Re-entering B2C from another section: rewind and play once
+        if (previousSectionId !== 'b2c' && typeof playB2cVideo === 'function') {
+            playB2cVideo(true);
+        }
+    } else {
+        // Other sections: crossfade out all video backdrops to show ambient brand atmosphere
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2bVideo) b2bVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+    }
+}
+
 window.addEventListener('scroll', () => {
-    if (isProgrammaticScrolling) return; // Prevent bubble flickering during hover-triggered scroll
+    if (isProgrammaticScrolling) return; // Prevent interference during automated scroll
     
-    const scrollPosition = window.scrollY + 220;
+    const viewportMiddle = window.scrollY + (window.innerHeight * 0.4);
     
-    let currentSectionId = '';
+    let activeId = '';
     sections.forEach(section => {
         const top = section.offsetTop;
         const height = section.offsetHeight;
-        if (scrollPosition >= top && scrollPosition < top + height) {
-            currentSectionId = section.getAttribute('id');
+        if (viewportMiddle >= top && viewportMiddle < (top + height)) {
+            activeId = section.getAttribute('id');
         }
     });
     
-    if (currentSectionId) {
-        const matchingLink = document.querySelector(`.nav-links .nav-link[href="#${currentSectionId}"]`);
+    if (activeId) {
+        updateActiveSectionBackground(activeId);
+        const matchingLink = document.querySelector(`.nav-links .nav-link[href="#${activeId}"]`);
         if (matchingLink && matchingLink !== activeNavLink) {
             navLinks.forEach(l => l.classList.remove('active'));
             matchingLink.classList.add('active');
@@ -421,4 +487,106 @@ function initWaterfallCascade() {
 window.addEventListener('DOMContentLoaded', initWaterfallCascade);
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
     initWaterfallCascade();
+}
+
+// --- HERO BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const heroBgVideo = document.getElementById('hero-bg-video');
+let hasExitedHeroOnce = false;
+
+if (heroBgVideo) {
+    heroBgVideo.muted = true;
+    heroBgVideo.playsInline = true;
+    heroBgVideo.loop = false;
+    heroBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame when video completes
+    heroBgVideo.addEventListener('ended', () => {
+        heroBgVideo.pause();
+    });
+
+    // Fast-start unlock on user interaction or DOM load
+    const startFluidVideo = () => {
+        if (heroBgVideo.paused && !heroBgVideo.ended) {
+            heroBgVideo.play().catch(() => {});
+        }
+    };
+
+    document.addEventListener('touchstart', startFluidVideo, { once: true, passive: true });
+    document.addEventListener('click', startFluidVideo, { once: true, passive: true });
+
+    // Initial play trigger
+    heroBgVideo.play().catch(() => {});
+}
+
+function applyHeroVideoSpeedRamp(restart = false) {
+    if (!heroBgVideo) return;
+    
+    heroBgVideo.muted = true;
+    heroBgVideo.loop = false;
+    heroBgVideo.playbackRate = 1.0;
+
+    // When explicitly navigated to Inicio, rewind and replay
+    if (restart || heroBgVideo.ended) {
+        heroBgVideo.currentTime = 0;
+    }
+
+    heroBgVideo.play().catch(() => {});
+}
+
+// --- B2B BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const b2bBgVideo = document.getElementById('b2b-bg-video');
+
+if (b2bBgVideo) {
+    b2bBgVideo.muted = true;
+    b2bBgVideo.playsInline = true;
+    b2bBgVideo.loop = false;
+    b2bBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame
+    b2bBgVideo.addEventListener('ended', () => {
+        b2bBgVideo.pause();
+    });
+}
+
+function playB2bVideo(restart = false) {
+    if (!b2bBgVideo) return;
+
+    b2bBgVideo.muted = true;
+    b2bBgVideo.loop = false;
+    b2bBgVideo.playbackRate = 1.0;
+
+    if (restart || b2bBgVideo.ended) {
+        b2bBgVideo.currentTime = 0;
+    }
+
+    b2bBgVideo.play().catch(() => {});
+}
+
+// --- B2C BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const b2cBgVideo = document.getElementById('b2c-bg-video');
+
+if (b2cBgVideo) {
+    b2cBgVideo.muted = true;
+    b2cBgVideo.playsInline = true;
+    b2cBgVideo.loop = false;
+    b2cBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame
+    b2cBgVideo.addEventListener('ended', () => {
+        b2cBgVideo.pause();
+    });
+}
+
+function playB2cVideo(restart = false) {
+    if (!b2cBgVideo) return;
+
+    b2cBgVideo.muted = true;
+    b2cBgVideo.loop = false;
+    b2cBgVideo.playbackRate = 1.0;
+
+    if (restart || b2cBgVideo.ended) {
+        b2cBgVideo.currentTime = 0;
+    }
+
+    b2cBgVideo.play().catch(() => {});
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dualidad Estudio Creativo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
     <!-- Background Image Canvas & Orbs -->
@@ -13,6 +13,28 @@
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
     <div class="bg-orb orb-3"></div>
+
+    <!-- Global Static Viewport Video Backgrounds (Crossfades per active section) -->
+    <div class="section-bg-backdrop active" id="hero-video-backdrop">
+        <video id="hero-bg-video" autoplay muted playsinline preload="auto" poster="assets/background.jpg">
+            <source src="assets/hero-video.mp4?v=3" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="section-bg-backdrop hidden-bg" id="b2b-video-backdrop">
+        <video id="b2b-bg-video" muted playsinline preload="auto" poster="assets/background.jpg">
+            <source src="assets/b2b-video.mp4?v=1" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="section-bg-backdrop hidden-bg" id="b2c-video-backdrop">
+        <video id="b2c-bg-video" muted playsinline preload="auto" poster="assets/background.jpg">
+            <source src="assets/b2c-video.mp4?v=1" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
     <!-- Navigation -->
     <nav class="glass-nav">
@@ -294,6 +316,6 @@
         </div>
     </div>
 
-    <script src="main.js?v=10"></script>
+    <script src="main.js?v=17"></script>
 </body>
 </html>
