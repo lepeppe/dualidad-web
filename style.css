@@ -416,9 +416,27 @@ body[data-active-section="contacto"] .bg-canvas {
 }
 
 .video-reel-container {
-    width: 80%; max-width: 1000px; height: 50vh; margin: 0 auto 50px auto;
-    border-radius: 30px; padding: 10px;
+    width: 90%; 
+    max-width: 960px; 
+    aspect-ratio: 16 / 9;
+    max-height: 540px;
+    margin: 0 auto 50px auto;
+    border-radius: 28px; 
+    padding: 10px;
+    box-shadow: var(--liquid-glass-shadow);
+    position: relative;
+    overflow: hidden;
 }
+
+.video-reel-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+    display: block;
+    background: #0b1c22;
+}
+
 .video-placeholder {
     width: 100%; height: 100%; border-radius: 20px;
     background: linear-gradient(45deg, #eee, #ddd);
