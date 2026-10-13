@@ -128,12 +128,18 @@ function updateActiveSectionBackground(newSectionId) {
         if (previousSectionId !== 'hero' && typeof applyHeroVideoSpeedRamp === 'function') {
             applyHeroVideoSpeedRamp(true);
         }
+        if (typeof playHeroYouTube === 'function') {
+            playHeroYouTube();
+        }
     } else if (newSectionId === 'b2b') {
         if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
         if (b2bBackdrop) b2bBackdrop.classList.remove('hidden-bg');
         if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
         if (heroVideo) heroVideo.pause();
         if (b2cVideo) b2cVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
         // Re-entering B2B from another section: rewind and play once
         if (previousSectionId !== 'b2b' && typeof playB2bVideo === 'function') {
             playB2bVideo(true);
@@ -144,6 +150,9 @@ function updateActiveSectionBackground(newSectionId) {
         if (b2cBackdrop) b2cBackdrop.classList.remove('hidden-bg');
         if (heroVideo) heroVideo.pause();
         if (b2bVideo) b2bVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
         // Re-entering B2C from another section: rewind and play once
         if (previousSectionId !== 'b2c' && typeof playB2cVideo === 'function') {
             playB2cVideo(true);
@@ -156,6 +165,9 @@ function updateActiveSectionBackground(newSectionId) {
         if (heroVideo) heroVideo.pause();
         if (b2bVideo) b2bVideo.pause();
         if (b2cVideo) b2cVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
     }
 }
 
@@ -589,4 +601,50 @@ function playB2cVideo(restart = false) {
     }
 
     b2cBgVideo.play().catch(() => {});
+}
+
+// --- HERO YOUTUBE REEL AUTOPLAY & SCROLL-PAUSE CONTROLLER ---
+function sendYouTubeMessage(func) {
+    const iframe = document.getElementById('hero-youtube-iframe');
+    if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: func,
+            args: ''
+        }), '*');
+    }
+}
+
+function pauseHeroYouTube() {
+    sendYouTubeMessage('pauseVideo');
+}
+
+function playHeroYouTube() {
+    sendYouTubeMessage('playVideo');
+}
+
+// Auto-pause when user scrolls down away from the video reel, and resume when scrolling back up
+const heroReelContainer = document.querySelector('.video-reel-container');
+if (heroReelContainer && 'IntersectionObserver' in window) {
+    let hasLoadedFirstTime = false;
+    const heroReelObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // When in view: continue playing
+                if (hasLoadedFirstTime) {
+                    playHeroYouTube();
+                } else {
+                    hasLoadedFirstTime = true;
+                }
+            } else {
+                // When scrolled out of view: pause video
+                hasLoadedFirstTime = true;
+                pauseHeroYouTube();
+            }
+        });
+    }, {
+        threshold: 0.15 // Triggers pause when only 15% or less remains in view
+    });
+
+    heroReelObserver.observe(heroReelContainer);
 }
