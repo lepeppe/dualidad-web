@@ -114,16 +114,32 @@ function updateActiveSectionBackground(newSectionId) {
     const heroBackdrop = document.getElementById('hero-video-backdrop');
     const b2bBackdrop = document.getElementById('b2b-video-backdrop');
     const b2cBackdrop = document.getElementById('b2c-video-backdrop');
+    const academiaBackdrop = document.getElementById('academia-video-backdrop');
+    const portfolioBackdrop = document.getElementById('portfolio-video-backdrop');
+    const blogBackdrop = document.getElementById('blog-video-backdrop');
+    const contactoBackdrop = document.getElementById('contacto-video-backdrop');
     const heroVideo = document.getElementById('hero-bg-video');
     const b2bVideo = document.getElementById('b2b-bg-video');
     const b2cVideo = document.getElementById('b2c-bg-video');
+    const academiaVideo = document.getElementById('academia-bg-video');
+    const portfolioVideo = document.getElementById('portfolio-bg-video');
+    const blogVideo = document.getElementById('blog-bg-video');
+    const contactoVideo = document.getElementById('contacto-bg-video');
 
     if (newSectionId === 'hero') {
         if (heroBackdrop) heroBackdrop.classList.remove('hidden-bg');
         if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
         if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
         if (b2bVideo) b2bVideo.pause();
         if (b2cVideo) b2cVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
         // Re-entering Hero from another section: rewind and play once
         if (previousSectionId !== 'hero' && typeof applyHeroVideoSpeedRamp === 'function') {
             applyHeroVideoSpeedRamp(true);
@@ -135,8 +151,16 @@ function updateActiveSectionBackground(newSectionId) {
         if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
         if (b2bBackdrop) b2bBackdrop.classList.remove('hidden-bg');
         if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
         if (heroVideo) heroVideo.pause();
         if (b2cVideo) b2cVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
         if (typeof pauseHeroYouTube === 'function') {
             pauseHeroYouTube();
         }
@@ -148,8 +172,16 @@ function updateActiveSectionBackground(newSectionId) {
         if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
         if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
         if (b2cBackdrop) b2cBackdrop.classList.remove('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
         if (heroVideo) heroVideo.pause();
         if (b2bVideo) b2bVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
         if (typeof pauseHeroYouTube === 'function') {
             pauseHeroYouTube();
         }
@@ -157,14 +189,106 @@ function updateActiveSectionBackground(newSectionId) {
         if (previousSectionId !== 'b2c' && typeof playB2cVideo === 'function') {
             playB2cVideo(true);
         }
+    } else if (newSectionId === 'academia') {
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.remove('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2bVideo) b2bVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
+        // Re-entering Academia from another section: rewind and play once
+        if (previousSectionId !== 'academia' && typeof playAcademiaVideo === 'function') {
+            playAcademiaVideo(true);
+        }
+    } else if (newSectionId === 'portfolio') {
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.remove('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2bVideo) b2bVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
+        // Re-entering Portfolio from another section: rewind and play once
+        if (previousSectionId !== 'portfolio' && typeof playPortfolioVideo === 'function') {
+            playPortfolioVideo(true);
+        }
+    } else if (newSectionId === 'blog') {
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.remove('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2bVideo) b2bVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
+        // Re-entering Blog from another section: rewind and play once
+        if (previousSectionId !== 'blog' && typeof playBlogVideo === 'function') {
+            playBlogVideo(true);
+        }
+    } else if (newSectionId === 'contacto') {
+        if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
+        if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
+        if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.remove('hidden-bg');
+        if (heroVideo) heroVideo.pause();
+        if (b2bVideo) b2bVideo.pause();
+        if (b2cVideo) b2cVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (typeof pauseHeroYouTube === 'function') {
+            pauseHeroYouTube();
+        }
+        // Re-entering Contacto from another section: rewind and play once
+        if (previousSectionId !== 'contacto' && typeof playContactoVideo === 'function') {
+            playContactoVideo(true);
+        }
     } else {
         // Other sections: crossfade out all video backdrops to show ambient brand atmosphere
         if (heroBackdrop) heroBackdrop.classList.add('hidden-bg');
         if (b2bBackdrop) b2bBackdrop.classList.add('hidden-bg');
         if (b2cBackdrop) b2cBackdrop.classList.add('hidden-bg');
+        if (academiaBackdrop) academiaBackdrop.classList.add('hidden-bg');
+        if (portfolioBackdrop) portfolioBackdrop.classList.add('hidden-bg');
+        if (blogBackdrop) blogBackdrop.classList.add('hidden-bg');
+        if (contactoBackdrop) contactoBackdrop.classList.add('hidden-bg');
         if (heroVideo) heroVideo.pause();
         if (b2bVideo) b2bVideo.pause();
         if (b2cVideo) b2cVideo.pause();
+        if (academiaVideo) academiaVideo.pause();
+        if (portfolioVideo) portfolioVideo.pause();
+        if (blogVideo) blogVideo.pause();
+        if (contactoVideo) contactoVideo.pause();
         if (typeof pauseHeroYouTube === 'function') {
             pauseHeroYouTube();
         }
@@ -601,6 +725,122 @@ function playB2cVideo(restart = false) {
     }
 
     b2cBgVideo.play().catch(() => {});
+}
+
+// --- ACADEMIA BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const academiaBgVideo = document.getElementById('academia-bg-video');
+
+if (academiaBgVideo) {
+    academiaBgVideo.muted = true;
+    academiaBgVideo.playsInline = true;
+    academiaBgVideo.loop = false;
+    academiaBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame
+    academiaBgVideo.addEventListener('ended', () => {
+        academiaBgVideo.pause();
+    });
+}
+
+function playAcademiaVideo(restart = false) {
+    if (!academiaBgVideo) return;
+
+    academiaBgVideo.muted = true;
+    academiaBgVideo.loop = false;
+    academiaBgVideo.playbackRate = 1.0;
+
+    if (restart || academiaBgVideo.ended) {
+        academiaBgVideo.currentTime = 0;
+    }
+
+    academiaBgVideo.play().catch(() => {});
+}
+
+// --- PORTFOLIO BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const portfolioBgVideo = document.getElementById('portfolio-bg-video');
+
+if (portfolioBgVideo) {
+    portfolioBgVideo.muted = true;
+    portfolioBgVideo.playsInline = true;
+    portfolioBgVideo.loop = false;
+    portfolioBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame
+    portfolioBgVideo.addEventListener('ended', () => {
+        portfolioBgVideo.pause();
+    });
+}
+
+function playPortfolioVideo(restart = false) {
+    if (!portfolioBgVideo) return;
+
+    portfolioBgVideo.muted = true;
+    portfolioBgVideo.loop = false;
+    portfolioBgVideo.playbackRate = 1.0;
+
+    if (restart || portfolioBgVideo.ended) {
+        portfolioBgVideo.currentTime = 0;
+    }
+
+    portfolioBgVideo.play().catch(() => {});
+}
+
+// --- BLOG BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const blogBgVideo = document.getElementById('blog-bg-video');
+
+if (blogBgVideo) {
+    blogBgVideo.muted = true;
+    blogBgVideo.playsInline = true;
+    blogBgVideo.loop = false;
+    blogBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame
+    blogBgVideo.addEventListener('ended', () => {
+        blogBgVideo.pause();
+    });
+}
+
+function playBlogVideo(restart = false) {
+    if (!blogBgVideo) return;
+
+    blogBgVideo.muted = true;
+    blogBgVideo.loop = false;
+    blogBgVideo.playbackRate = 1.0;
+
+    if (restart || blogBgVideo.ended) {
+        blogBgVideo.currentTime = 0;
+    }
+
+    blogBgVideo.play().catch(() => {});
+}
+
+// --- CONTACTO BACKGROUND VIDEO CONTROLLER (Plays smoothly once & freezes on last frame) ---
+const contactoBgVideo = document.getElementById('contacto-bg-video');
+
+if (contactoBgVideo) {
+    contactoBgVideo.muted = true;
+    contactoBgVideo.playsInline = true;
+    contactoBgVideo.loop = false;
+    contactoBgVideo.playbackRate = 1.0;
+
+    // Freeze exactly on the last frame
+    contactoBgVideo.addEventListener('ended', () => {
+        contactoBgVideo.pause();
+    });
+}
+
+function playContactoVideo(restart = false) {
+    if (!contactoBgVideo) return;
+
+    contactoBgVideo.muted = true;
+    contactoBgVideo.loop = false;
+    contactoBgVideo.playbackRate = 1.0;
+
+    if (restart || contactoBgVideo.ended) {
+        contactoBgVideo.currentTime = 0;
+    }
+
+    contactoBgVideo.play().catch(() => {});
 }
 
 // --- HERO YOUTUBE REEL AUTOPLAY & SCROLL-PAUSE CONTROLLER ---
